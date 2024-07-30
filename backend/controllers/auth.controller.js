@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
+import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 
 export async function signup(req, res) {
     try{
@@ -34,22 +35,26 @@ export async function signup(req, res) {
         const salt = await bcryptjs.genSalt(10);
         const hashedPassword = await bcryptjs.hash(password,salt);
 
-        const PROFILE_PICS = ["/avatar1.png","/avatar2.png","/avatar3.png"];
-        const image = PROFILE_PICS[Math.floor(Math.random() + PROFILE_PICS.length)];
+        const PROFILE_PICS = ["/avatar1.png", "/avatar2.png", "/avatar3.png"];
+        const image = PROFILE_PICS[Math.floor(Math.random() * PROFILE_PICS.length)];
+
 
         const newUser = new User({
             email,
             password:hashedPassword,
             username,
             image
-        })
+        });
 
+        generateTokenAndSetCookie(newUser._id, res);
         await newUser.save();
-
-        res.status(201).json({ success: true, user: {
-            ...newUser._doc,
-            password:""
-        }})
+        res.status(201).json({
+            success:true,
+            user: {
+                ...newUser._doc,
+                password: "",
+            },
+            });
     } catch(err) {
         console.log("Error in signup controller", err.message);
         res.status(500).json({success:false,message:"Internal server error"})
