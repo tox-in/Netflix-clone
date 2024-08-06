@@ -1,6 +1,6 @@
 const HomePage = () => {
   return (
-    <div>
+    <div className="hero-bg h-screen">
       HomePage
     </div>
   )

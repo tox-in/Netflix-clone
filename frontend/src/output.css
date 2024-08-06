@@ -553,3 +553,7 @@ video {
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
 }
+
+.hero-bg{
+  background-image: url("hero.png");
+}
