@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.route.js";
 import movieRoutes from "./routes/movie.route.js";
@@ -10,6 +11,15 @@ import { protectRoute } from "./middleware/protectRoute.js";
 
 const app = express();
 const PORT = ENV_VARS.PORT;
+
+const corsOptions = {
+     origin: 'http://localhost:5173',
+     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+     credentials: true,
+     optionsSuccessStatus: 204
+ };
+ 
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
