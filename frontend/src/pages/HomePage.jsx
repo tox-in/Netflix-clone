@@ -1,10 +1,20 @@
+import { useEffect } from 'react';
+import { useAuthStore } from "../store/authUser";
 import AuthScreen from "./AuthScreen";
 import HomeScreen from "./HomeScreen";
 
 const HomePage = () => {
-  const user = false;
+    const { user, authCheck, isCheckingAuth } = useAuthStore();
 
-  return <div>{user ? <HomeScreen />:<AuthScreen />}</div>
-}
+    useEffect(() => {
+        authCheck();
+    }, [authCheck]);
 
-export default HomePage
+    if (isCheckingAuth) {
+        return <div>Loading...</div>;
+    }
+
+    return <div>{user ? <HomeScreen /> : <AuthScreen />}</div>;
+};
+
+export default HomePage;
