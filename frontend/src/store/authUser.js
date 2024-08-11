@@ -22,10 +22,9 @@ export const useAuthStore = create((set) => ({
         set({ isSigningUp: true });
         try {
             const response = await axios.post("http://localhost:5020/api/v1/auth/signup", credentials, { withCredentials: true });
-            // No need to set Authorization header, cookies are handled automatically
             set({ user: response.data.user, isSigningUp: false });
             toast.success("An account was created successfully");
-            await get().authCheck(); // Refresh user state after signup
+            await get().authCheck();
         } catch (error) {
             toast.error(error.response?.data?.message || "An error occurred");
             set({ isSigningUp: false, user: null });
@@ -34,12 +33,10 @@ export const useAuthStore = create((set) => ({
     
 
     login: async () => {
-        // Implement login functionality here if needed
+    
     },
 
     logout: async () => {
-        // Implement logout functionality here if needed
-        // Clear the JWT cookie
         document.cookie = 'jwt-netflix=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         set({ user: null });
     },
