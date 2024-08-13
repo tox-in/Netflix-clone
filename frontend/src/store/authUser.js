@@ -10,16 +10,6 @@ export const useAuthStore = create((set) => ({
     isCheckingAuth: true,
     isLoggingOut: false,
 
-    authCheck: async () => {
-        set({ isCheckingAuth: true });
-        try {
-            const response = await axios.get("http://localhost:5020/api/v1/auth/authCheck", { withCredentials: true });
-            set({ user: response.data.user, isCheckingAuth: false });
-        } catch (error) {
-            set({ isCheckingAuth: false, user: null });
-        }
-    },
-
     signup: async (credentials) => {
         set({ isSigningUp: true });
         try {
@@ -27,7 +17,7 @@ export const useAuthStore = create((set) => ({
             set({ user: response.data.user, isSigningUp: false });
             toast.success("An account was created successfully");
         } catch (error) {
-            toast.error(error.response?.data?.message || "An error occurred");
+            toast.error(error.response?.data?.message || "Signup failed");
             set({ isSigningUp: false, user: null });
         }
     },
@@ -40,7 +30,7 @@ export const useAuthStore = create((set) => ({
             set({ user: response.data.user, isLoggingIn: false });
             toast.success("Logged In successfully");
         } catch (error) {
-            toast.error(error.response?.data?.message || "An error occurred");
+            toast.error(error.response?.data?.message || "Login failed");
             set({ isLoggingIn: false, user: null });
         }
     },
@@ -56,6 +46,17 @@ export const useAuthStore = create((set) => ({
         } catch (error) {
           set({ isLoggingOut: false });
           toast.error(error.response.data.message || "Logout failed");
+        }
+    },
+
+    
+    authCheck: async () => {
+        set({ isCheckingAuth: true });
+        try {
+            const response = await axios.get("http://localhost:5020/api/v1/auth/authCheck", { withCredentials: true });
+            set({ user: response.data.user, isCheckingAuth: false });
+        } catch (error) {
+            set({ isCheckingAuth: false, user: null });
         }
     },
 }));
