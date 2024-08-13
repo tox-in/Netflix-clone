@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '../store/authUser';
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuthStore();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     console.log(email, password);
+    await login({email, password});
   }
   return (
     <div className="h-screen w-full hero-bg">
@@ -57,7 +60,7 @@ const LoginPage = () => {
             </button>
           </form>
           <div className="text-center text-gray-400">
-            Don't have an account?{" "}
+            Don{"'"}t have an account?{" "}
             <Link to={"/signup"} className="text-red-500 hover-underline">
             Sign Up
             </Link>
