@@ -38,18 +38,17 @@ export const useAuthStore = create((set) => ({
     logout: async () => {
         set({ isLoggingOut: true });
         try {
-          await axios.post("http://localhost:5020/api/v1/auth/logout");
-          document.cookie =
-            "jwt-netflix=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          await axios.post("http://localhost:5020/api/v1/auth/logout", {}, { withCredentials: true });
           set({ user: null, isLoggingOut: false });
           toast.success("Logged out successfully");
         } catch (error) {
           set({ isLoggingOut: false });
-          toast.error(error.response.data.message || "Logout failed");
+          toast.error(error.response?.data?.message || "Logout failed");
         }
-    },
+     },
+     
 
-    
+
     authCheck: async () => {
         set({ isCheckingAuth: true });
         try {
