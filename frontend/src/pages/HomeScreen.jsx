@@ -1,14 +1,20 @@
 import { Info, Play } from "lucide-react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import useGetTrendingContent from "../hooks/useGetTrendingContent";
+import { ORIGINAL_IMG_BASE_URL } from "../constants/constants";
 
 const HomeScreen = () => {
+  const { trendingContent } = useGetTrendingContent();
+  
+  // Add Loading spinner
+  
   return (
     <>
     <div className="relative h-screen text-white">
       <Navbar />
 
-      <img src="/extraction.jpg" alt="hero img" className="absolute top-0 left-0 w-full h-full object-cover -z-50" />
+      <img src={ORIGINAL_IMG_BASE_URL + trendingContent?.backdrop_path} alt="hero img" className="absolute top-0 left-0 w-full h-full object-cover -z-50" />
 
       <div className="absolute top-0 left-0 w-full h-full bg-black/50 -z-50" aria-hidden="true" />
 
@@ -16,19 +22,25 @@ const HomeScreen = () => {
       <div className="bg-gradient-to-b from-black via-transparent to-transparent absolute w-full h-full top-0 left-0 -z-10" />
       <div className="max-w-2xl">
         <h1 className="mt-4 text-6xl font-extrabold text-balance">
-          Extraction
+          {trendingContent?.title || trendingContent?.name}
         </h1>
-        <p className="mt-2 text-xl">2014 | 18+</p>
+        <p className="mt-2 text-lg">
+        {(trendingContent?.release_date?.substring(0, 4) || 
+          trendingContent?.first_air_date?.substring(0, 4))}{" "} 
+        | {trendingContent?.adult ? "18+" : "PG-13"}
+
+        </p>
 
         <p className="mt-4 text-xl">
-          wertyuiopdfghjitfbnjgfvbnjygfvbhfcvbgfcvbgfdcvbgfcvbhy
-          gbnmkhnmjlijhgfdxzqwoidjweffefjvovvifjjrirjifjijifjvf
-          jvifjifjvifjfjiesj[aaofjjvfjjfhhirejjdgiyjpofd]
+          {trendingContent?.overview.length > 200
+          ? trendingContent?.overview.slice(0, 200) + "..."
+          : trendingContent?.overview
+          }
         </p>
       </div>
 
       <div className="flex mt-8">
-        <Link to="/watch/1233" className="bg-white hover:bg-white/80 text-black font-bold py-2 px-4 rounded mr-4 flex items-center">
+        <Link to={`/watch/${trendingContent?.id}`} className="bg-white hover:bg-white/80 text-black font-bold py-2 px-4 rounded mr-4 flex items-center">
         <Play className="size-6 mr-2 fill-black" />
           Play
         </Link>
