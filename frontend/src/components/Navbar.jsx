@@ -12,7 +12,6 @@ const Navbar = () => {
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
     const handleSetContentType = (type) => {
-        // Update state only if necessary to avoid unnecessary re-renders
         if (contentType !== type) {
             setContentType(type);
         }
