@@ -17,6 +17,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    "react/no-unescaped-entity":"off"
+    "react/no-unescaped-entity":"off",
+    "react/prop-types":"off"
   },
 }
