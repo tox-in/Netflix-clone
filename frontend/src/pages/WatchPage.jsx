@@ -32,10 +32,12 @@ const WatchPage = () => {
         const getSimilarContent = async () => {
             try {
             const res = await axios.get(`http://localhost:5020/api/v1/${contentType}/${id}/similar`, {withCredentials:true});
-            setSimilarContent(res.data.trailers);
+            console.log("res", res);
+            
+            setSimilarContent(res.data.similar);
             } catch (error) {
                 if(error.message.includes('404')){
-                    setTrailers([]) ;
+                    setSimilarContent([]) ;
                 }
             }
         }
