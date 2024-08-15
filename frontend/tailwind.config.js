@@ -1,3 +1,4 @@
+import tailwindScrollbarHide from "tailwind-scrollbar-hide";
 export default {
 content: [
   "./index.html",
@@ -6,5 +7,5 @@ content: [
 theme: {
   extend: {},
 },
-plugins: [],
+plugins: [tailwindScrollbarHide],
 }
