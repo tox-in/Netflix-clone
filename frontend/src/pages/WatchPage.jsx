@@ -100,6 +100,11 @@ const WatchPage = () => {
                 </button>
             </div>
         )}
+
+        <div className="aspect-video mb-8 p-2 sm:px-10 md:px-32">
+            {trailers.length > 0 && ()}
+        </div>
+
       </div>
     </div>
   )
