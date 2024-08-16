@@ -6,10 +6,10 @@ import axios from 'axios';
 const WatchPage = () => {
     const { id } = useParams();
     const [trailers, setTrailers] = useState([]);
+    const [similarContent, setSimilarContent] = useState([]);
     const [currentTrailerIdx, setCurrentTrailerIdx] = useState(0);
     const [loading, setLoading] = useState(true);
     const [content, setContent] = useState({});
-    const [similarContent, setSimilarContent] = useState([]);
     const {contentType} = useContentStore();
 
     useEffect(() => {
@@ -31,15 +31,15 @@ const WatchPage = () => {
     useEffect(() => {
         const getSimilarContent = async () => {
             try {
-            const res = await axios.get(`http://localhost:5020/api/v1/${contentType}/${id}/similar`, {withCredentials:true});
+                const res = await axios.get(`http://localhost:5020/api/v1/${contentType}/${id}/similar`, {withCredentials:true});
             
-            setSimilarContent(res.data.similar);
+                setSimilarContent(res.data.similar);
             } catch (error) {
                 if(error.message.includes('404')){
                     setSimilarContent([]) ;
                 }
             }
-        }
+        };
         getSimilarContent();
     }, [contentType,id]);
 
