@@ -4,6 +4,7 @@ import { useContentStore } from '../store/content';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ReactPlayer from "react-player";
 
 const WatchPage = () => {
     const { id } = useParams();
@@ -102,7 +103,15 @@ const WatchPage = () => {
         )}
 
         <div className="aspect-video mb-8 p-2 sm:px-10 md:px-32">
-            {trailers.length > 0 && ()}
+            {trailers.length > 0 && (
+                <ReactPlayer 
+                controls = {true}
+                    width = {"100%"}
+                    height={"70vh"}
+                    className="mx-auto overflow-hidden rounded-lg"
+                    url={`https://www.youtube.com/watch?v=${trailers[currentTrailerIdx].key}`}
+                />
+            )}
         </div>
 
       </div>
