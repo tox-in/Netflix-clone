@@ -45,6 +45,23 @@ const WatchPage = () => {
 
     console.log("similar content", similarContent);
     
+    useEffect(() => {
+        const getContentDetails = async () => {
+            try {
+                const res = await axios.get(`http://localhost:5020/api/v1/${contentType}/${id}/details`, {withCredentials:true});
+            
+                setContent(res.data.content);
+            } catch (error) {
+                if(error.message.includes('404')){
+                    setContent([]) ;
+                }
+            }
+        };
+        getContentDetails();
+    }, [contentType,id]);
+
+    console.log("contentDetails", content);
+    
     
   return (
     <div>

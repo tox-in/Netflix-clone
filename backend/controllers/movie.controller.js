@@ -46,7 +46,7 @@ export async function getSimilarMovies(req, res) {
 
     try {
         const data = await fetchFromTMDB(`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US`);
-        res.json({ success: true, content: data.results });
+        res.json({ success: true, similar: data.results });
     } catch(error) {
         if(error.message.includes("404")){
             return res.status(404).send(null)
