@@ -10,6 +10,8 @@ import WatchPage from "./pages/WatchPage";
 import SearchPage from "./pages/SearchPage";
 import SearchHistoryPage from "./pages/SearchHistoryPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import 'react-hot-toast/dist/index.css';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const { user, isCheckingAuth, authCheck } = useAuthStore();
@@ -20,6 +22,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       {isCheckingAuth ? (
         <div className="h-screen">
           <div className="flex justify-center items-center bg-black h-full">
