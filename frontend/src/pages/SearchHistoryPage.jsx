@@ -57,8 +57,6 @@ if (searchHistory?.length === 0) {
   )
 }
 
-console.log("searchHistory" , searchHistory);
-
 
 return <div className="bg-black text-white min-h-screen">
     <Navbar />
