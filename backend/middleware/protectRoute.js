@@ -4,7 +4,6 @@ import { ENV_VARS } from "../config/envVars.js";
 
 export const protectRoute = async (req, res, next) => {
     try {
-        // Corrected the way to access the cookie
         const token = req.cookies["jwt-netflix"];
 
         if (!token) {
