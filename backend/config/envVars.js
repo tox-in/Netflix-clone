@@ -1,13 +1,12 @@
 import dotenv from "dotenv";
 import path from "path";
-import { fileURLToPath } from "url";
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config({ path: path.resolve(__dirname, "../.env") });
-
-console.log("MONGO_URI:", process.env.MONGO_URI);
+// Load environment variables from the root directory
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 export const ENV_VARS = {
     MONGO_URI: process.env.MONGO_URI,
@@ -15,4 +14,4 @@ export const ENV_VARS = {
     JWT_SECRET: process.env.JWT_SECRET,
     NODE_ENV: process.env.NODE_ENV,
     TMDB_API_KEY: process.env.TMDB_API_KEY
-};
+}

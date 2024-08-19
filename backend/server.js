@@ -9,6 +9,10 @@ import { ENV_VARS } from "./config/envVars.js";
 import { connectDB } from "./config/db.js";
 import { protectRoute } from "./middleware/protectRoute.js";
 
+if(ENV_VARS.NODE_ENV === "production") {
+     app.use(express.static(path.join(__dirname, "/frontend/dist")))
+}
+
 const app = express();
 const PORT = ENV_VARS.PORT;
 
