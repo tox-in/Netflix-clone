@@ -83,11 +83,11 @@ const WatchPage = () => {
         sliderRef.current.scrollBy({left: sliderRef.current.offsetWidth, behavior: 'smooth'})
     }
 
-    // if(loading) return (
-    //     <div className="min-h-screen bg-black p-10">
-    //         <WatchPageSkeleton></WatchPageSkeleton>
-    //     </div>
-    // );
+    if(loading) return (
+        <div className="min-h-screen bg-black p-10">
+            <WatchPageSkeleton />
+        </div>
+    );
 
     if(!content) {
         return (
