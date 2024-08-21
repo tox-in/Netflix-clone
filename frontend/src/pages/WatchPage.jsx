@@ -26,7 +26,7 @@ const WatchPage = () => {
             try {
             const res = await axios.get(`https://flexflix.onrender.com/api/v1/${contentType}/${id}/trailers`, {withCredentials:true});
             setTrailers(res.data.trailers);
-            console.log("trailers", res);
+            setLoading(!loading);
             } catch (error) {
                 if(error.message.includes('404')){
                     setTrailers([]) ;
@@ -43,7 +43,7 @@ const WatchPage = () => {
             
                 setSimilarContent(res.data.similar);
 
-                console.log("similar content", res);
+                setLoading(!loading);
             } catch (error) {
                 if(error.message.includes('404')){
                     setSimilarContent([]) ;
@@ -60,7 +60,7 @@ const WatchPage = () => {
             
                 setContent(res.data.content);
 
-                console.log("content details", res);
+                setLoading(!loading);
             } catch (error) {
                 if(error.message.includes('404')){
                     setContent([]) ;
