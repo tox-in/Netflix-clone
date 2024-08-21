@@ -28,7 +28,6 @@ export const useAuthStore = create((set) => ({
         set({ isLoggingIn: true });
         try {
             const response = await axios.post("https://flexflix.onrender.com/api/v1/auth/login", credentials, { withCredentials: true });
-            console.log("response", response);
             set({ user: response.data.user, isLoggingIn: false });
             toast.success("Logged In successfully");
         } catch (error) {
@@ -42,7 +41,6 @@ export const useAuthStore = create((set) => ({
         set({ isLoggingOut: true });
         try {
           await axios.post("https://flexflix.onrender.com/api/v1/auth/logout", {}, { withCredentials: true });
-          console.log("logged out");
           set({ user: null, isLoggingOut: false });
           toast.success("Logged out successfully");
         } catch (error) {

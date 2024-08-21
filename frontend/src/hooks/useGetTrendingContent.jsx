@@ -10,7 +10,6 @@ const useGetTrendingContent = () => {
         const getTrendingContent = async () => {
             const res = await axios.get(`https://flexflix.onrender.com/api/v1/${contentType}/trending`, {withCredentials: true});
             setTrendingContent(res.data.content)
-            console.log(res);
         }
         getTrendingContent();
     }, [contentType]);
