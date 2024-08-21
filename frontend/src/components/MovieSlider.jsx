@@ -16,7 +16,7 @@ const MovieSlider = ({ category }) => {
 
     useEffect(() => {
         const getContent = async () => {
-            const res = await axios.get(`http://localhost:5020/api/v1/${contentType}/${category}`, {withCredentials:true})
+            const res = await axios.get(`https://flexflix.onrender.com/api/v1/${contentType}/${category}`, {withCredentials:true})
             setContent(res.data.content)
         }
         getContent()

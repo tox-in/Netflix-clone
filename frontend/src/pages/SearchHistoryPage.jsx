@@ -23,7 +23,7 @@ const SearchHistoryPage = () => {
     useEffect(() => {
         const getSearchHistory = async () => {
             try {
-                const res = await axios.get("http://localhost:5020/api/v1/search/history", { withCredentials: true });
+                const res = await axios.get("https://flexflix.onrender.com/api/v1/search/history", { withCredentials: true });
                 setSearchHistory(res.data.content.searchHistory);
             } catch (err) {
                 console.log(err.message);
@@ -36,7 +36,7 @@ const SearchHistoryPage = () => {
 
     const handleDelete = async (entry) => {
         try {
-            await axios.delete(`http://localhost:5020/api/v1/search/history/${entry.id}`, { withCredentials: true });
+            await axios.delete(`https://flexflix.onrender.com/api/v1/search/history/${entry.id}`, { withCredentials: true });
             setSearchHistory(searchHistory.filter((item) => item.id !== entry.id));
             toast.success("Search item deleted successfully");
         } catch (err) {

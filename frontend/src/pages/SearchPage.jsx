@@ -23,7 +23,7 @@ const SearchPage = () => {
     const handleSearch = async (e) => {
         e.preventDefault();
         try{
-            const res = await axios.get(`http://localhost:5020/api/v1/search/${activeTab}/${searchTerm}`, {withCredentials:true})
+            const res = await axios.get(`https://flexflix.onrender.com/api/v1/search/${activeTab}/${searchTerm}`, {withCredentials:true})
             setResults(res.data.content)
         } catch (error) {
             if(error.response.status === 404) {
