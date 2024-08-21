@@ -15,7 +15,7 @@ const AuthScreen = () => {
     <div className="hero-bg relative">
       {/* Navbar */}
       <header className="max-w-6xl mx-auto flex items-center justify-between p-4 pb-10">
-        <img src="../../public/netflix-logo.png" alt="netflix logo" className="w-32 md:w-52" />
+        <img src="/netflix-logo.png" alt="netflix logo" className="w-32 md:w-52" />
         <Link to={"/login"} className="text-white bg-red-600 py-1 px-2 rounded">
             Sign In
         </Link>
@@ -61,14 +61,14 @@ const AuthScreen = () => {
             </div>
             {/* Right side */}
             <div className="flex-1 relative">
-            <img src="../../public/tv.png" alt="image" className="mt-4 z-20 relative" />
+            <img src="/tv.png" alt="image" className="mt-4 z-20 relative" />
             <video className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-1/2 z-10"
               playsInline
               autoPlay={true}
               muted
               loop
             >
-              <source src="../../public/hero-vid.m4v" type="video/mp4" />
+              <source src="/hero-vid.m4v" type="video/mp4" />
             </video>
             </div>
           </div>
@@ -84,17 +84,17 @@ const AuthScreen = () => {
             {/* left side */}
             <div className="flex-1">
               <div className="relative">
-                <img src="../../public/stranger-things-lg.png" alt="Stranger Things img"
+                <img src="/stranger-things-lg.png" alt="Stranger Things img"
                 className="mt-4"
                 />
                 <div className="flex items-center gap-2 absolute bottom-5 left-1/2 -translate-x-1/2 bg-black w-3/4 lg:w-1/2 h-20 border border-slate-500 rounded-md px-2">
-                <img src="../../public/stranger-things-sm.png" alt="image" className="h-full" />
+                <img src="/stranger-things-sm.png" alt="image" className="h-full" />
                 <div className="flex justify-between items-center w-full">
                   <div className="flex flex-col gap-0">
                     <span className="text-md lg:text-lg font-bold">Stranger Things</span>
                     <span className="text-sm text-blue-500">Downloading...</span>
                   </div>
-                  <img src="../../public/download-icon.gif" alt="download" className="h-12" />
+                  <img src="/download-icon.gif" alt="download" className="h-12" />
                 </div>
                 </div>
               </div>
@@ -128,14 +128,14 @@ const AuthScreen = () => {
             </div>
             {/* Right side */}
             <div className="flex-1 relative overflow-hidden">
-            <img src="../../public/device-pile.png" alt="device image" className="mt-4 z-20 relative" />
+            <img src="/device-pile.png" alt="device image" className="mt-4 z-20 relative" />
             <video className="absolute top-2 left-1/2 -translate-x-1/2 h-4/6 z-10 max-w-[63%]"
               playsInline
               autoPlay={true}
               muted
               loop
             >
-              <source src="../../public/video-devices.m4v" type="video/mp4" />
+              <source src="/video-devices.m4v" type="video/mp4" />
             </video>
             </div>
           </div>
@@ -151,7 +151,7 @@ const AuthScreen = () => {
         <div className="flex max-w-6xl mx-auto items-center justify-center flex-col-reverse md:flex-row px-4 md:px-2">
           {/* Left side */}
           <div className="flex-1 relative">
-            <img src="../../public/kids.png" alt="enjoy on your Tv" className="mt-4" />
+            <img src="/kids.png" alt="enjoy on your Tv" className="mt-4" />
           </div>
           {/* Right side */}
           <div className="flex-1 text-center md:text-left">
