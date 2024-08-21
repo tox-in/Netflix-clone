@@ -5,10 +5,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy:{
+    proxy: {
       "/api": {
-        target: "http://localhost:5020",
-      }
-    }
-  }
-})
+        target: "https://flexflix.onrender.com/",
+      },
+    },
+  },
+});
