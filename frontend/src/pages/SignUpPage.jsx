@@ -20,7 +20,7 @@ const SignUpPage = () => {
 
     useEffect(() => {
         if (user) {
-            navigate('/'); // Redirect to the home page if authenticated
+            navigate('/');
         }
     }, [user, navigate]);
 
