@@ -54,7 +54,7 @@ export const useAuthStore = create((set) => ({
     authCheck: async () => {
         set({ isCheckingAuth: true });
         try {
-            const response = await axios.get("http://localhost:5020/api/v1/auth/authCheck", { withCredentials: true });
+            const response = await axios.get("https://flexflix.onrender.com/api/v1/auth/authCheck", { withCredentials: true });
             set({ user: response.data.user, isCheckingAuth: false });
         } catch (error) {
             set({ isCheckingAuth: false, user: null });

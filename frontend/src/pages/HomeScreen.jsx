@@ -11,6 +11,9 @@ const HomeScreen = () => {
   const { trendingContent } = useGetTrendingContent();
   const { contentType } = useContentStore();
   const [imgLoading, setImgLoading] = useState(true);
+
+  console.log(trendingContent);
+  
   
   if(!trendingContent) return (
     <div className="h-screen text-white">
