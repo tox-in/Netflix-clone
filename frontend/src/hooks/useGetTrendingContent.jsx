@@ -8,7 +8,7 @@ const useGetTrendingContent = () => {
 
     useEffect(() => {
         const getTrendingContent = async () => {
-            const res = await axios.get(`http://localhost:5020/api/v1/${contentType}/trending`, {withCredentials: true});
+            const res = await axios.get(`http://localhost:10000/api/v1/${contentType}/trending`, {withCredentials: true});
             setTrendingContent(res.data.content)
         }
         getTrendingContent();

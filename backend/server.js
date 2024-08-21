@@ -17,7 +17,7 @@ const PORT = ENV_VARS.PORT;
 const __dirname = path.resolve();
 
 const corsOptions = {
-     origin: ['http://localhost:5173'],
+     origin: ['http://localhost:5173', 'https://flexflix.onrender.com'],
      credentials: true,
  };
  app.use(cors(corsOptions));
