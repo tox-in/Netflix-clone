@@ -14,7 +14,7 @@ export const useAuthStore = create((set) => ({
         set({ isSigningUp: true });
         
         try {
-            const response = await axios.post("http://localhost:5020/api/v1/auth/signup", credentials, { withCredentials: true });
+            const response = await axios.post("http://localhost:10000/api/v1/auth/signup", credentials, { withCredentials: true });
             set({ user: response.data.user, isSigningUp: false });
             toast.success("An account was created successfully");
         } catch (error) {
@@ -27,7 +27,7 @@ export const useAuthStore = create((set) => ({
     login: async (credentials) => {
         set({ isLoggingIn: true });
         try {
-            const response = await axios.post("http://localhost:5020/api/v1/auth/login", credentials, { withCredentials: true });
+            const response = await axios.post("http://localhost:10000/api/v1/auth/login", credentials, { withCredentials: true });
             set({ user: response.data.user, isLoggingIn: false });
             toast.success("Logged In successfully");
         } catch (error) {
@@ -40,7 +40,7 @@ export const useAuthStore = create((set) => ({
     logout: async () => {
         set({ isLoggingOut: true });
         try {
-          await axios.post("http://localhost:5020/api/v1/auth/logout", {}, { withCredentials: true });
+          await axios.post("http://localhost:10000/api/v1/auth/logout", {}, { withCredentials: true });
           set({ user: null, isLoggingOut: false });
           toast.success("Logged out successfully");
         } catch (error) {
